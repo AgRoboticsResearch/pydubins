@@ -1,30 +1,24 @@
-from setuptools import setup, Extension
 import os
-try:
-    from Cython.Distutils import build_ext
-except:
-    use_cython = False
-else:
-    use_cython = True
+from setuptools import setup
+from pybind11.setup_helpers import Pybind11Extension
 
-cmdclass = {}
-ext_modules = []
+INSTALL_REQUIRES = []
 
-if use_cython:
-    ext_modules = [
-        Extension("dubins",
-            ["dubins/src/dubins.c", "dubins/dubins.pyx"],
-            include_dirs = ["dubins/include"],
-        )
-    ]
-    cmdclass.update({ 'build_ext' : build_ext })
-else:
-    ext_modules = [
-        Extension("dubins",
-            ["dubins/src/dubins.c", "dubins/dubins.c"],
-            include_dirs = ["dubins/include"],
-        )
-    ]
+INCLUDE_DIRS = [
+    "dubins/include",
+]
+
+ext_modules = [
+    Pybind11Extension(
+        name="dubins",
+        cxx_std=14,
+        sources=[
+            "dubins/src/dubins_pybind.cpp",
+            "dubins/src/dubins.cpp"
+        ],
+        include_dirs=INCLUDE_DIRS,
+    ),
+]
 
 def read(filename):
     path = os.path.join(os.path.dirname(__file__), filename)
@@ -47,15 +41,11 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
-        'Programming Language :: Python :: 3.6',
         'Operating System :: POSIX :: Linux',
         'Topic :: Scientific/Engineering :: Mathematics',
     ],
-    cmdclass     = cmdclass,
+    install_requires = INSTALL_REQUIRES,
     ext_modules  = ext_modules,
 )
 

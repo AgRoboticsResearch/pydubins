@@ -1,5 +1,6 @@
-_build
+.vscode/
 *egg-info
-build
-dist
-MANIFEST
+build/
+dist/
+
+extern/
