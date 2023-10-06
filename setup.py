@@ -4,9 +4,7 @@ from pybind11.setup_helpers import Pybind11Extension
 
 INSTALL_REQUIRES = []
 
-INCLUDE_DIRS = [
-    "dubins/include",
-]
+INCLUDE_DIRS = ["dubins/include"]
 
 ext_modules = [
     Pybind11Extension(

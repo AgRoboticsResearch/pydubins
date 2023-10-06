@@ -2,6 +2,18 @@
 dubins
 ======
 
+Important
+======
+
+This is a pybind11 version of the original `dubins <https://github.com/AndrewWalker/pydubins>`_ package. It supports python 3.9+ and provides same functionality.
+
+To install the package:
+
+.. code-block:: console
+
+    $ pip install .
+
+
 Overview
 ========
 
@@ -9,24 +21,6 @@ This software finds the shortest paths between configurations for the Dubins' ca
 
 The approach used to find paths is based on the algebraic solutions published in [Shkel01]_. However, rather than using angular symmetries to improve performance, the simpler approach to test all possible solutions is used here. 
 
-This code is primarily a Cython wrapper of https://github.com/AndrewWalker/Dubins-Curves
-
-|docs| |build_status| |license|
-
-Installing
-==========
-
-You can install the latest stable version from `PyPI <http://pypi.python.org/pypi/dubins>`_
-
-.. code-block:: console
-
-    $ pip install dubins
-
-Or, you can install the latest development version from `GitHub <https://github.com/AndrewWalker/pydubins>`_
-
-.. code-block:: console
-
-    $ pip install git+git://github.com/AndrewWalker/pydubins.git
 
 Example
 =======
@@ -62,15 +56,3 @@ References
 .. [Shkel01] Shkel, A. M. and Lumelsky, V. (2001). "Classification of the Dubins set". Robotics and Autonomous Systems 34 (2001) 179–202
 .. [Walker11] Walker, A. (2011). "Hard Real-Time Motion Planning for Autonomous Vehicles", PhD thesis, Swinburne University.
 .. [Smart08] Royce, S. (2008). "Evolutionary Control of Autonomous Underwater Vehicles". PhD thesis, RMIT
-
-.. |build_status| image:: https://secure.travis-ci.org/AndrewWalker/pydubins.png?branch=master
-   :target: https://travis-ci.org/AndrewWalker/pydubins
-   :alt: Current build status
-
-.. |docs| image:: https://readthedocs.org/projects/dubins/badge/?version=latest 
-   :target: http://dubins.readthedocs.org/en/latest/
-   :alt: Latest documentation
-
-.. |license| image:: https://img.shields.io/badge/License-MIT-blue.svg
-   :target: http://opensource.org/licenses/MIT
-   :alt: license shield
